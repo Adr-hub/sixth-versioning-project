@@ -1,0 +1,26 @@
+{
+  "name": "backend-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon --watch .env --watch ./server.js --watch models/user.js --watch controllers/signUp.js  --watch controllers/login.js --watch routes/signUpRoute.js --watch routes/loginRoute.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Adr-hub/sixth-versioning-project.git"
+  },
+  "author": "Adrien",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.2",
+    "mongoose-unique-validator": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
