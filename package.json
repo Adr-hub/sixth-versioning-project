@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/Adr-hub/sixth-versioning-project.git"
   },
-  "author": "Adrien",
+  "author": "Adr-hub",
   "license": "UNLICENSED",
   "dependencies": {
     "bcrypt": "^5.0.1",
