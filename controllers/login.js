@@ -1,41 +1,39 @@
 const registeredUser = require('../models/user.js');
-const randomSecretKey = require('crypto');
 const bcrypt = require('bcrypt');
+const randomKey = require('crypto');
 const tokens = require('jsonwebtoken');
-let login = (req, res) => {
+
+exports.login = (req, res) => {
+
 
     registeredUser.findOne({ email: req.body.email }).then((registered) => {
 
-        if (registered === undefined || registered === null) {
-            res.sendStatus(500);
+        if (!registered) {
+            res.status(401).json({ message: 'You have to enter a valid email.' });
         }
         else {
             bcrypt.compare(req.body.password, registered.password).then((compared) => {
-                randomSecretKey.randomBytes(32, (err, buff) => {
-                    let secret = buff;
-                    if (compared && err === null) {
+                if (compared) {
 
-                        let token = tokens.sign({ userId: String(registered._id) }, secret, { expiresIn: '3h' });
-                        res.json({ userId: String(registered._id), token: token }).status(200);
-                    }
+                    const secret = randomKey.randomBytes(32);
+                    exports.secret = secret;
 
-                    else {
-                        console.error(err, 'Buffer error ?');
-                        res.sendStatus(400);
-                    }
-                })
+                    let token = tokens.sign({ userId: String(registered._id) }, secret, { expiresIn: '3h' });
+                    res.status(200).json({ userId: String(registered._id), token: token });
+                }
+
+                else {
+
+                    res.status(401).json({ message: 'You have to enter a valid password.' });
+                }
             })
                 .catch((error) => {
-                    res.send(error).status(404);
+                    res.status(404).json({ message: error });
                 })
         }
     })
         .catch((error) => {
-            res.send(error).status(500);
+            res.status(500).json({ message: error });
         })
 
 }
-
-
-
-module.exports = login;
