@@ -24,6 +24,6 @@ let authorize = (req, res, next) => {
     catch (e) {
         res.status(403).json({ message: e });
     }
-}
+};
 
 module.exports = authorize;

@@ -10,10 +10,10 @@ const getIdRoute = sauces.get('/:id', authorizeFunction, saucesControllers.getSa
 
 const postRoute = sauces.post('/', authorizeFunction, uploadingImages, saucesControllers.postSauces);
 
-// const putRoute = sauces.put('/:id', authorizeFunction, uploadingImages);
+const putRoute = sauces.put('/:id', authorizeFunction, uploadingImages, saucesControllers.putSauces);
 
 const deleteRoute = sauces.delete('/:id', authorizeFunction, saucesControllers.deleteSauces);
 
-// const postLikesRoute = sauces.post('/:id/like', authorizeFunction);
+const postLikesRoute = sauces.post('/:id/like', authorizeFunction, saucesControllers.likeSauces);
 
-module.exports = { getRoute, postRoute, getIdRoute, deleteRoute };
+module.exports = { getRoute, postRoute, getIdRoute, putRoute, deleteRoute, postLikesRoute };

@@ -29,11 +29,11 @@ exports.login = (req, res) => {
             })
                 .catch((error) => {
                     res.status(404).json({ message: error });
-                })
+                });
         }
     })
         .catch((error) => {
             res.status(500).json({ message: error });
-        })
+        });
 
-}
+};

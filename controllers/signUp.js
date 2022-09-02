@@ -8,19 +8,20 @@ let signUp = (req, res) => {
             new user({ email: req.body.email, password: hash }).save()
 
                 .then(() => {
-                    res.status(200).json({ message: 'Registration completed' });
+                    res.status(201).json({ message: 'Registration completed' });
                 })
                 .catch((error) => {
-                    res.status(500).json(error);
-                })
+                    res.status(400).json(error);
+                });
 
         }).catch((error) => {
-            console.error(error, 'HASH ERROR !!')
+            console.error(error, 'Hash error !');
             res.status(500).json(error);
-        })
+        });
     }
     else {
-        res.sendStatus(500);
+        let error = new Error('Registration error !');
+        res.status(500).json({ message: error.message });
     }
 };
 module.exports = signUp;

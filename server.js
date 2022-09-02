@@ -26,15 +26,14 @@ expressFramework.use('/', (req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
-})
+});
 
 expressFramework.use('/', json);
 expressFramework.use(static);
 
 expressFramework.use('/api/auth', signUpModule, loginModule);
 
-expressFramework.use('/api/sauces',
-    saucesMiddlewares.getRoute, saucesMiddlewares.getIdRoute, saucesMiddlewares.postRoute, /*saucesMiddlewares.putRoute,*/ saucesMiddlewares.deleteRoute/*, saucesMiddlewares.postLikesRoute*/);
+expressFramework.use('/api/sauces', saucesMiddlewares.getRoute, saucesMiddlewares.getIdRoute, saucesMiddlewares.postRoute, saucesMiddlewares.putRoute, saucesMiddlewares.deleteRoute, saucesMiddlewares.postLikesRoute);
 
 const expressServer = httpProtocol.createServer(expressFramework).listen(3000);
 expressServer.on('error', (err) => {
