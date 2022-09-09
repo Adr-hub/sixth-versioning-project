@@ -9,7 +9,6 @@ const saucesMiddlewares = require('./routes/saucesRoutes');
 let databaseUserName = process.env.MONGODB_USERNAME;
 let databasePassword = process.env.MONGODB_PASSWORD;
 let clusterName = process.env.MONGODB_CLUSTER_NAME;
-
 const static = express.static('images', { index: false });
 const json = express.json();
 

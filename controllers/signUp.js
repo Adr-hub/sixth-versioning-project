@@ -1,7 +1,7 @@
 const user = require('../models/user.js');
 const hashPackage = require('bcrypt');
 
-let signUp = (req, res) => {
+exports.signUp = (req, res) => {
 
     if (!req.body.email.match(/[<>/;'{}]+/) && !req.body.password.match(/[<>/;{}]+/)) {
         hashPackage.hash(req.body.password, 12).then((hash) => {
@@ -24,4 +24,3 @@ let signUp = (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-module.exports = signUp;

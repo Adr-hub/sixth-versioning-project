@@ -19,7 +19,7 @@ exports.login = (req, res) => {
                     exports.secret = secret;
 
                     let token = tokens.sign({ userId: String(registered._id) }, secret, { expiresIn: '3h' });
-                    res.status(200).json({ userId: String(registered._id), token: token });
+                    res.status(201).json({ userId: String(registered._id), token: token });
                 }
 
                 else {
@@ -35,5 +35,4 @@ exports.login = (req, res) => {
         .catch((error) => {
             res.status(500).json({ message: error });
         });
-
 };

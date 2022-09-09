@@ -1,16 +1,12 @@
 {
-  "name": "sixth-versioning-project",
+  "name": "api",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --watch .env --watch ./server.js --watch models/user.js --watch models/sauce.js --watch controllers/signUp.js  --watch controllers/login.js --watch controllers/routes.js --watch routes/signUpRoute.js --watch routes/loginRoute.js --watch routes/saucesRoutes.js --watch middleware/upload.js --watch middleware/authorization.js"
+    "start": "nodemon --watch .env --watch ./server.js --watch models/user.js --watch models/sauce.js --watch controllers/signUp.js  --watch controllers/login.js --watch controllers/sauces.js --watch routes/signUpRoute.js --watch routes/loginRoute.js --watch routes/saucesRoutes.js --watch middleware/upload.js --watch middleware/authorization.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Adr-hub/sixth-versioning-project.git"
-  },
-  "author": "Adr-hub",
+  "author": "Adrien Rival",
   "license": "UNLICENSED",
   "dependencies": {
     "bcrypt": "^5.0.1",

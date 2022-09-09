@@ -1,7 +1,7 @@
 const sauceRoute = require('express');
-const authorizeFunction = require('../middleware/authorization');
-const saucesControllers = require('../controllers/routes');
-const uploadingImages = require('../middleware/upload');
+const authorizeFunction = require('../middlewares/authorization').authorize;
+const saucesControllers = require('../controllers/sauces');
+const uploadingImages = require('../middlewares/upload');
 const sauces = sauceRoute.Router();
 
 const getRoute = sauces.get('/', authorizeFunction, saucesControllers.getSauces);
